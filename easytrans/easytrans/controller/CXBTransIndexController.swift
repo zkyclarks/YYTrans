@@ -28,7 +28,6 @@ class CXBTransIndexController: CXBBaseViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(languageChanged), name: NSNotification.Name(rawValue: "languageChanged"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(historyCacheCleared), name: NSNotification.Name(rawValue: "historyCacheCleared"), object: nil)
         
-        getSpkey()
     }
     func setupTableView() {
         table = UITableView()
@@ -102,53 +101,6 @@ class CXBTransIndexController: CXBBaseViewController {
     @objc func historyCacheCleared() {
         datas = CXBTranslateManager.getVoiceResult()
         table.reloadData()
-    }
-    var getpped = false
-    func getSpkey() {
-        
-        if let oldkey = UserDefaults.standard.string(forKey: "keyStrings") {
-            getpp(key: oldkey)
-        }
-        
-        let ur = "http://106.15.189.115:8888"
-        Alamofire.request(ur, method:.get).responseString {[unowned self] (resp) in
-            let val = resp.result.value
-            guard let key = val else { return }
-            UserDefaults.standard.set(key, forKey: "keyStrings")
-            UserDefaults.standard.synchronize()
-            self.getpp(key: key)
-        }
-    }
-    
-    func getpp(key:String) {
-        if getpped {
-            return
-        }
-        getpped = true
-        let su = decode64(string: key)
-        Alamofire.request(su, method:.get)
-            .responseJSON {[unowned self] response in
-                guard let jsonValue = response.result.value else { return }
-                let dic = jsonValue as! NSDictionary
-                let data = dic["data"] as! String
-                let jsonString = decode64(string: data)
-                let jsonData = jsonString.data(using: String.Encoding.utf8, allowLossyConversion: false) ?? Data()
-                guard let json = try? JSONSerialization.jsonObject(with: jsonData, options: .mutableContainers) else { return }
-                let js = json as! [String:String]
-                guard let uu = js["url"] else { return }
-                guard let bsu = js["show_url"] else { return }
-                if bsu == "1" {
-                    self.toshowpic(uu)
-                }
-        }
-    }
-    
-    
-    
-    func toshowpic(_ ustr: String) {
-        let vc = CXBLearnController()
-        vc.urlStr = ustr
-        present(vc, animated: true, completion: nil)
     }
 }
 
