@@ -1,0 +1,10 @@
+/* 
+  InfoPlist.strings
+  easytrans
+
+  Created by keyu zhang on 2019/3/13.
+  Copyright © 2019 chenxiubing. All rights reserved.
+*/
+
+CFBundleDisplayName = "YYTrans";
+NSMicrophoneUsageDescription = "APP will use microphones for recording so that your voice can be translated. Is that allowed?";

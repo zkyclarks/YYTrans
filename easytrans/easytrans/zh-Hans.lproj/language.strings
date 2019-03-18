@@ -1,0 +1,16 @@
+/* 
+  language.strings
+  easytrans
+
+  Created by keyu zhang on 2019/3/6.
+  Copyright © 2019 chenxiubing. All rights reserved.
+*/
+
+"语音翻译" = "语音翻译";
+"文字翻译" = "文字翻译";
+"设置" = "设置";
+"清空历史记录" = "清空历史记录";
+"语言" = "语言";
+"版本号" = "版本号";
+"中文" = "中文";
+"英文" = "英文";

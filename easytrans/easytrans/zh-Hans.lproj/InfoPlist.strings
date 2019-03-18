@@ -1,0 +1,10 @@
+/* 
+  InfoPlist.strings
+  easytrans
+
+  Created by keyu zhang on 2019/3/13.
+  Copyright © 2019 chenxiubing. All rights reserved.
+*/
+
+CFBundleDisplayName = "易译翻译";
+NSMicrophoneUsageDescription = "APP将使用麦克风用于录音，以便对您的语音进行翻译，是否允许？";
